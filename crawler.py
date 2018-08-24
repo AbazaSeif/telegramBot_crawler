@@ -27,7 +27,7 @@ def webhook_handler():
 
         if text == '/dcardfitness':
             bot.sendMessage(chat_id = chat_id, text = dcardFitness())
-        else if text == '/dcardfood':
+        elif text == '/dcardfood':
             bot.sendMessage(chat_id = chat_id, text = dcardFood())
         else:
             bot.sendMessage(chat_id = chat_id, text = text)
