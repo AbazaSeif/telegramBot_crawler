@@ -12,7 +12,7 @@ botToken = '681432558:AAEdVCNPNr4AudRvqwhk1Sqmk2hACHpkgWI'
 bot = telegram.Bot(token = botToken)
 
 def _set_webhook():
-    status = bot.set_webhook('URL')
+    status = bot.set_webhook('https://telegram-bot-crawler.herokuapp.com/hook')
 	if not status:
         print('Webhook setup failed')
         sys.exit(1) 
@@ -29,7 +29,7 @@ def webhook_handler():
         bot.sendMessage(chat_id = chat_id, text = text)
 
     return 'ok'
-    
+
 if __name__ == "__main__":
     _set_webhook()
     app.run()
