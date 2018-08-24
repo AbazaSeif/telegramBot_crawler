@@ -13,7 +13,7 @@ bot = telegram.Bot(token = botToken)
 
 def _set_webhook():
     status = bot.set_webhook('https://telegram-bot-crawler.herokuapp.com/hook')
-	if not status:
+    if not status:
         print('Webhook setup failed')
         sys.exit(1) 
 	pass
