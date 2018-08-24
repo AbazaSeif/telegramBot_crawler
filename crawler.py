@@ -33,8 +33,8 @@ def webhook_handler():
     return 'ok'
 
 def dcardFitness():
-	url = "https://www.dcard.tw/f/fitness"
-    retext = "dcard fitness\n"
+    url = "https://www.dcard.tw/f/fitness"
+    retext = 'dcard fitness\n'
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text, 'html.parser')
     fitnessTitle = soup.find_all('h3', re.compile('PostEntry_title_'))
