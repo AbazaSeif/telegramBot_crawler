@@ -16,7 +16,6 @@ def _set_webhook():
     if not status:
         print('Webhook setup failed')
         sys.exit(1) 
-	pass
 
 @app.route('/hook', methods=['POST'])
 def webhook_handler():
