@@ -27,6 +27,8 @@ def webhook_handler():
 
         if text == '/dcardfitness':
             bot.sendMessage(chat_id = chat_id, text = dcardFitness())
+        if text == '/dcardfood':
+            bot.sendMessage(chat_id = chat_id, text = dcardFood())
         else:
             bot.sendMessage(chat_id = chat_id, text = text)
 
@@ -34,6 +36,18 @@ def webhook_handler():
 
 def dcardFitness():
     url = "https://www.dcard.tw/f/fitness"
+    retext = 'dcard fitness\n'
+    resp = requests.get(url)
+    soup = BeautifulSoup(resp.text, 'html.parser')
+    fitnessTitle = soup.find_all('h3', re.compile('PostEntry_title_'))
+    fitnessLink = soup.find_all('a', re.compile('PostEntry_root_'))
+
+    for index, (title, link) in enumerate(zip(fitnessTitle[:10], fitnessLink[:10])):  #前10篇
+        retext += "{0:2d}. {1}\nhttps://www.dcard.tw{2}\n".format(index + 1, title.text, link.get('href'))
+    return retext
+
+def dcardFood():
+    url = "https://www.dcard.tw/f/food"
     retext = 'dcard fitness\n'
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text, 'html.parser')
